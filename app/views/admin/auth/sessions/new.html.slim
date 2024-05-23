@@ -1,0 +1,8 @@
+.login-box
+  .login-logo
+    .h1 管理画面
+  .card.card-outline.card-primary
+    .card-body.login-card-body
+      = button_to "ログイン", admin_github_omniauth_authorize_path, method: :post, class: "btn btn-block btn-primary"
+      - if Rails.env.development? || Rails.env.test?
+        = button_to "デバッグログイン", debug_admin_session_path, method: :post, class: "btn btn-block btn-secondary mt-2"

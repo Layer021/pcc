@@ -1,0 +1,30 @@
+- content_for :title, "カレンダーイベント一覧"
+- content_for :breadcrumb do
+  li.breadcrumb-item
+    = link_to 'ダッシュボード', root_path
+  li.breadcrumb-item.active
+    | カレンダーイベント一覧
+.card
+  .card-body.p-0
+    table.table.table-striped
+      thead
+        tr
+          th ID
+          th タイトル
+          th 期間
+          th 状態
+          th
+      tbody
+        - @calendar_events.each do |calendar_event|
+          tr
+            td = calendar_event.id
+            td = calendar_event.title
+            td = "#{calendar_event.start_at.strftime('%Y/%m/%d %H:%M')} 〜 #{calendar_event.end_at.strftime('%Y/%m/%d %H:%M')}"
+            td = calendar_event.enabled? ? '有効' : '無効'
+            td
+              = form_with model: calendar_event, url: calendar_event_path(calendar_event), method: :patch do |f|
+                - if calendar_event.enabled?
+                  = button_tag '無効化', class: 'btn btn-sm btn-danger', name: "#{f.object_name}[enabled]", value: '0'
+                - else
+                  = button_tag '有効化', class: 'btn btn-sm btn-primary', name: "#{f.object_name}[enabled]", value: '1'
+  .card-footer

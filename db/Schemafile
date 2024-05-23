@@ -1,0 +1,21 @@
+# encoding: utf-8
+
+create_table "admins", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "管理者" do |t|
+  t.string :name, limit: 191, default: "", null: false
+  t.string :email, default: "", null: false
+  t.timestamps precision: 6, null: false
+  t.index ["email"], name: "index_admins_on_email", unique: true
+end
+
+create_table "calendar_events", id: :bigint, unsigned: true, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", comment: "カレンダーイベント" do |t|
+  t.string :gcal_event_id, limit: 191, comment: "GoogleカレンダーイベントID"
+  t.string :title, limit: 191, null: false, comment: "タイトル"
+  t.string :event_key, limit: 191, null: false, comment: "イベントキー"
+  t.text :description, comment: "説明"
+  t.datetime :start_at, precision: 6, null: false, comment: "開始日時"
+  t.datetime :end_at, precision: 6, null: false, comment: "終了日時"
+  t.string :url, comment: "URL"
+  t.timestamps precision: 6, null: false
+  t.integer :enabled, limit: 1, default: 1, null: false, comment: "有効フラグ"
+  t.index ["event_key"], name: "index_calendar_events_on_event_key", unique: true
+end

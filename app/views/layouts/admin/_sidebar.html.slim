@@ -1,0 +1,13 @@
+aside.main-sidebar.sidebar-dark-primary.elevation-4
+  = link_to root_path, class: "brand-link" do
+    img.brand-image.img-circle.elevation-3 src="https://admin.lit-gallery.com/vendor/adminlte/dist/img/AdminLTELogo.png" alt="Admin Logo" style="opacity:.8"
+    span.brand-text.font-weight-light
+      | 管理画面
+  .sidebar
+    nav.pt-2
+      ul.nav.nav-pills.nav-sidebar.flex-column data-widget="treeview" role="menu"
+        li.nav-item
+          = link_to calendar_events_path, class: "nav-link" do
+            i.far.fa-fw.fa-circle
+            p
+              | カレンダーイベント
