@@ -1,24 +1,4 @@
-# README
+# photo-contest-crawler(pcc)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+東○カメラ部のWebサイトに掲載されている開催中のフォトコンテスト情報を取得するためのクローラーです。
+取得したフォトコンテスト情報は、Googleカレンダーに登録されます。
