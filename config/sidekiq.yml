@@ -5,6 +5,6 @@
 :scheduler:
   schedule:
     TokyoCameraClubCrawlerWorker:
-      cron: "*/5 * * * *"
+      cron: "0 0 * * *"
       class: TokyoCameraClubCrawlerWorker
       queue: default
