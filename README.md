@@ -22,3 +22,9 @@ $ make all
 $ make run
 ```
 http://localhost:13000 にアクセス
+
+## スクリーンショット
+<img width="1508" alt="スクリーンショット 2024-05-24 23 41 44" src="https://github.com/Layer021/pcc/assets/28092171/6b8a5f1d-fcc0-45ae-81a8-122a59e96139">
+
+<img width="770" alt="スクリーンショット 2024-05-24 23 42 10" src="https://github.com/Layer021/pcc/assets/28092171/35aecb9d-ae7c-4e3a-8535-7716ae096a16">
+
