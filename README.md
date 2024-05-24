@@ -3,11 +3,12 @@
 東○カメラ部のWebサイトに掲載されている開催中のフォトコンテスト情報を取得するためのクローラーです。  
 取得したフォトコンテスト情報は、Googleカレンダーに登録されます。
 
-## 使用したライブライなど
+## 使用したライブラリなど
 - Docker
 - Ruby on Rails
 - Devise
 - Omniauth (GitHub)
+- Sidekiq
 - Google Calendar API
 - AdminLTE
 
