@@ -5,7 +5,7 @@ class Admin::CalendarEventsController < Admin::ApplicationController
 
   def update
     calendar_event = CalendarEvent.find(params[:id])
-    
+
     calendar_event.transaction do
       calendar_event.update!(calendar_event_params)
 
@@ -31,12 +31,13 @@ class Admin::CalendarEventsController < Admin::ApplicationController
   end
 
   def create_gcal_event(calendar_event)
-    gcal_event = GoogleCalendarService.new.create_event({
+    gcal_event_params = {
       summary: calendar_event.title,
       description: "#{calendar_event.description}\n#{calendar_event.url}",
       start_at: calendar_event.start_at,
       end_at: calendar_event.end_at
-    })
+    }
+    gcal_event = GoogleCalendarService.new.create_event(gcal_event_params)
     calendar_event.update!(gcal_event_id: gcal_event.id)
   end
 end

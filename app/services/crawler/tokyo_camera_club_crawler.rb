@@ -17,6 +17,7 @@ module Crawler
       event_list.each do |event|
         # articleタグ以外はスキップ
         next unless event.name == "article"
+
         save_event(event)
       end
     end
@@ -28,13 +29,13 @@ module Crawler
         calendar_event = @cal_event_service.save(generate_calendar_event_params(event))
         gcal_event_params = convert_calendar_event_to_gcal_event_params(calendar_event)
 
-        return unless calendar_event.enabled?
-
-        if calendar_event.gcal_event_id.present?
-          @gcal_service.update_event(calendar_event.gcal_event_id, gcal_event_params)
-        else
-          gcal_event = @gcal_service.create_event(gcal_event_params)
-          calendar_event.update!(gcal_event_id: gcal_event.id)
+        if calendar_event.enabled?
+          if calendar_event.gcal_event_id.present?
+            @gcal_service.update_event(calendar_event.gcal_event_id, gcal_event_params)
+          else
+            gcal_event = @gcal_service.create_event(gcal_event_params)
+            calendar_event.update!(gcal_event_id: gcal_event.id)
+          end
         end
       end
     end
