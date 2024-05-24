@@ -28,6 +28,8 @@ module Crawler
         calendar_event = @cal_event_service.save(generate_calendar_event_params(event))
         gcal_event_params = convert_calendar_event_to_gcal_event_params(calendar_event)
 
+        return unless calendar_event.enabled?
+
         if calendar_event.gcal_event_id.present?
           @gcal_service.update_event(calendar_event.gcal_event_id, gcal_event_params)
         else
