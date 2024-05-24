@@ -15,6 +15,21 @@ services:
     depends_on:
       - mysql
       - mysql-test
+      - redis
+    networks:
+      - pcc_docker_network
+
+  sidekiq:
+    build:
+      context: .
+      dockerfile: ./docker/image/web/Dockerfile
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    volumes:
+      - .:/project/pcc:cached
+    depends_on:
+      - mysql
+      - mysql-test
+      - redis
     networks:
       - pcc_docker_network
 
@@ -47,3 +62,12 @@ services:
       MYSQL_DATABASE: pcc_test
       MYSQL_USER: user
       MYSQL_PASSWORD: secret
+
+  redis:
+    image: redis:alpine
+    networks:
+      - pcc_docker_network
+    volumes:
+      - ./docker/data/redis:/data
+    ports:
+      - "16379:6379"
