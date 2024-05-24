@@ -15,7 +15,7 @@ create_table "calendar_events", id: :bigint, unsigned: true, force: :cascade, op
   t.datetime :start_at, precision: 6, null: false, comment: "開始日時"
   t.datetime :end_at, precision: 6, null: false, comment: "終了日時"
   t.string :url, comment: "URL"
-  t.timestamps precision: 6, null: false
   t.integer :enabled, limit: 1, default: 1, null: false, comment: "有効フラグ"
+  t.timestamps precision: 6, null: false
   t.index ["event_key"], name: "index_calendar_events_on_event_key", unique: true
 end
