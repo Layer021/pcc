@@ -5,4 +5,4 @@
     .card-body.login-card-body
       = button_to "ログイン", admin_github_omniauth_authorize_path, method: :post, class: "btn btn-block btn-primary"
       - if Rails.env.development? || Rails.env.test?
-        = button_to "デバッグログイン", debug_admin_session_path, method: :post, class: "btn btn-block btn-secondary mt-2"
+        = button_to "デバッグログイン", admin_debug_admin_session_path, method: :post, class: "btn btn-block btn-secondary mt-2"

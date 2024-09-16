@@ -7,12 +7,12 @@ class Admin::Auth::SessionsController < Admin::ApplicationController
 
   def destroy
     sign_out(current_admin)
-    redirect_to new_admin_session_path
+    redirect_to admin_new_admin_session_path
   end
 
   def debug_login
     admin = Admin.first
     sign_in(admin)
-    redirect_to root_path
+    redirect_to admin_root_path
   end
 end
