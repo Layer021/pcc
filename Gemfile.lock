@@ -247,7 +247,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.3)
-    rack (3.0.9.1)
+    rack (3.0.14)
     rack-cors (2.0.2)
       rack (>= 2.0.0)
     rack-protection (4.0.0)
